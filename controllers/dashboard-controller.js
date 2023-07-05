@@ -1,6 +1,7 @@
 import { stationStore } from "../models/station-store.js";
 
 export const dashboardController = {
+  
   async index(request, response) {
     const viewData = {
       title: "WeatherTop Dashboard",
