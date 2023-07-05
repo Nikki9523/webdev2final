@@ -18,13 +18,17 @@ export const readingStore = {
     return reading;
   },
 
-
-
   async getReadingById(id) {
     await db.read();
-    const list = db.data.objects.find((reading) => reading._id === id);
+    const list = db.data.readings.find((reading) => reading._id === id);
     return list;
   },
+
+  async getReadingsByStationId(id) {
+    await db.read();
+    return db.data.readings.filter((reading) => reading.stationid === id);
+  },
+
 
   async deleteReadingById(id) {
     await db.read();
