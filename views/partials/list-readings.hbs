@@ -2,6 +2,9 @@
     <thead>
         <tr>
             <th>weatherCode</th>
+            <th>Temperature Celsius</th>
+            <th>Wind Speed</th>
+            <th>Pressure</th>
         </tr>
     </thead>
     <tbody>
@@ -11,10 +14,13 @@
                 {{weatherCode}}
             </td>
             <td>
-                test
+                {{temp}}
             </td>
             <td>
-                test
+                {{windSpeed}}
+            </td>
+            <td>
+                {{pressure}}
             </td>
         </tr>
         {{/each}}
