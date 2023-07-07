@@ -1,12 +1,15 @@
 import { stationStore } from "../models/station-store.js";
 import { readingStore } from "../models/reading-store.js";
+import { weathertopAnalytics } from "../utils/weathertop-analytics.js";
 
 export const stationController = {
   async index(request, response) {
     const station = await stationStore.getStationById(request.params.id);
+    const latestReading = await weathertopAnalytics.getLatestReading(station);
     const viewData = {
       title: "Station",
       station: station,
+      latestReading: latestReading
     };
     response.render("station-view", viewData);
   },
