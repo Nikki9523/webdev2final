@@ -1,15 +1,18 @@
 import { stationStore } from "../models/station-store.js";
 import { readingStore } from "../models/reading-store.js";
 import { weathertopAnalytics } from "../utils/weathertop-analytics.js";
+import { weatherConversions } from "../utils/weather-conversions.js";
 
 export const stationController = {
   async index(request, response) {
     const station = await stationStore.getStationById(request.params.id);
     const latestReading = await weathertopAnalytics.getLatestReading(station);
+    const tempFahrenheit = await weatherConversions.tempCelsiusToFahrenheit();
     const viewData = {
       title: "Station",
       station: station,
-      latestReading: latestReading
+      latestReading: latestReading,
+      tempFahrenheit: tempFahrenheit
     };
     response.render("station-view", viewData);
   },
