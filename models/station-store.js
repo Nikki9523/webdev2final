@@ -2,6 +2,7 @@ import { v4 } from "uuid";
 import { initStore } from "../utils/store-utils.js";
 import { readingStore } from "./reading-store.js";
 
+
 const db = initStore("stations");
 
 export const stationStore = {
@@ -11,8 +12,10 @@ export const stationStore = {
   },
 
   async addStation(station) {
+    console.log(db.data.stations);
     await db.read();
     station._id = v4();
+    station.readings = [];
     db.data.stations.push(station);
     await db.write();
     return station;
@@ -41,5 +44,13 @@ export const stationStore = {
   async deleteAllStations() {
     db.data.stations = [];
     await db.write();
+  },
+
+  //Readings
+
+  async addReading(stationId, reading) {
+    const station = this.getStationById(stationId);
+    station.readings.push(reading);
+    return reading;
   },
 };
