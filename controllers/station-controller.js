@@ -22,7 +22,8 @@ export const stationController = {
       temp: request.body.temp,
       windSpeed: request.body.windSpeed,
       pressure: request.body.pressure,
-      temperatureFahrenheit: weatherConversions.convertCeslsiusToFahrenheit(request.body.temp)
+      temperatureFahrenheit: weatherConversions.convertCeslsiusToFahrenheit(request.body.temp),
+      weather: weatherConversions.weatherCodeConverter(request.body.weatherCode)
 
     };
     console.log(`adding reading | weather code: ${newReading.weatherCode},
