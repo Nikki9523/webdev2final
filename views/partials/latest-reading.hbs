@@ -1,26 +1,33 @@
 <div class="columns">
     <div class="column is-one-fifth">
         <div class="card-content has-background-black has-text-white has-text-centered">
+            <h1> Station Name </h1>
             {{station.title}}
         </div>
     </div>
     <div class="column is-one-fifth">
         <div class="card-content has-background-black has-text-white has-text-centered">
+            <h1> Weather </h1>
             {{latestReading.weatherCode}}
         </div>
     </div>
     <div class="column is-one-fifth">
         <div class="card-content has-background-black has-text-white has-text-centered">
-            {{latestReading.temp}}
+            <h1> Temperature </h1>
+            {{latestReading.temp}} <span>C</span>
+            <br>
+            {{latestReading.temperatureFahrenheit}} <span>F</span>
         </div>
     </div>
     <div class="column is-one-fifth">
         <div class="card-content has-background-black has-text-white has-text-centered">
+            <h1> Pressure </h1>
             {{latestReading.pressure}}
         </div>
     </div>
     <div class="column is-one-fifth">
         <div class="card-content has-background-black has-text-white has-text-centered">
+            <h1> Wind Speed </h1>
             {{latestReading.windSpeed}}
         </div>
     </div>
