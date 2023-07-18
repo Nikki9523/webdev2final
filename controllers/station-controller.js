@@ -1,6 +1,7 @@
 import { stationStore } from "../models/station-store.js";
 import { readingStore } from "../models/reading-store.js";
 import { weathertopAnalytics } from "../utils/weathertop-analytics.js";
+import { weatherConversions } from "../utils/weather-conversions.js";
 
 export const stationController = {
   async index(request, response) {
@@ -20,7 +21,9 @@ export const stationController = {
       weatherCode: request.body.weatherCode,
       temp: request.body.temp,
       windSpeed: request.body.windSpeed,
-      pressure: request.body.pressure
+      pressure: request.body.pressure,
+      temperatureFahrenheit: weatherConversions.convertCeslsiusToFahrenheit(request.body.temp)
+
     };
     console.log(`adding reading | weather code: ${newReading.weatherCode},
     temp: ${newReading.temp}, wind speed: ${newReading.windSpeed}, pressure: ${newReading.pressure}`);
