@@ -18,12 +18,12 @@ export const stationController = {
   async addReading(request, response) {
     const station = await stationStore.getStationById(request.params.id);
     const newReading = {
-      weatherCode: request.body.weatherCode,
+      weatherCode: Number(request.body.weatherCode),
       temp: request.body.temp,
       windSpeed: request.body.windSpeed,
       pressure: request.body.pressure,
       temperatureFahrenheit: weatherConversions.convertCeslsiusToFahrenheit(request.body.temp),
-      weather: weatherConversions.weatherCodeConverter(request.body.weatherCode)
+      weather: weatherConversions.weatherCodeConverter(Number(request.body.weatherCode))
 
     };
     console.log(`adding reading | weather code: ${newReading.weatherCode},

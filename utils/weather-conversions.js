@@ -5,28 +5,28 @@ export const weatherConversions = {
     weatherCodeConverter(weatherCode){
         let output;
         switch (weatherCode){
-            case "100":
+            case 100:
               output = "Clear";
               break;
-            case "200":
+            case 200:
               output = "Partial clouds";
               break;
-            case "300":
+            case 300:
               output = "Cloudy";
               break;
-            case "400":
+            case 400:
               output = "Light Showers";
               break;
-            case "500":
+            case 500:
               output = "Heavy Showers";
               break;
-            case "600":
+            case 600:
               output = "Rain";
               break;
-            case "700":
+            case 700:
               output = "Snow";
               break;
-            case "800":
+            case 800:
               output = "Thunder";
               break;
             default:
@@ -34,5 +34,7 @@ export const weatherConversions = {
               break;
     }
     return output;
-}
+},
+
+
 };
