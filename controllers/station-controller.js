@@ -20,10 +20,11 @@ export const stationController = {
     const newReading = {
       weatherCode: Number(request.body.weatherCode),
       temp: request.body.temp,
-      windSpeed: request.body.windSpeed,
-      pressure: request.body.pressure,
+      windSpeed: Number(request.body.windSpeed),
+      pressure: Number(request.body.pressure),
       temperatureFahrenheit: weatherConversions.convertCeslsiusToFahrenheit(request.body.temp),
-      weather: weatherConversions.weatherCodeConverter(Number(request.body.weatherCode))
+      weather: weatherConversions.weatherCodeConverter(Number(request.body.weatherCode)),
+      beaufort: weatherConversions.beaufortConversion(Number(weatherConversions.beaufortCode(request.body.windSpeed)))
 
     };
     console.log(`adding reading | weather code: ${newReading.weatherCode},
