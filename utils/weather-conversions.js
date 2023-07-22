@@ -146,5 +146,11 @@ windDirection(degree360) {
   }
   return "err";
 
+},
+
+windChill(temperatureCelsius, windSpeed) {
+ const velocityPow = Math.pow(windSpeed, 0.16);
+  const windChill = 13.12 + 0.6215 * temperatureCelsius - 11.37 * velocityPow + 0.3965 * temperatureCelsius * velocityPow;
+  return Math.round(windChill * 100) / 100;
 }
 };

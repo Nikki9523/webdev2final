@@ -26,11 +26,12 @@ export const stationController = {
       temperatureFahrenheit: weatherConversions.convertCeslsiusToFahrenheit(request.body.temp),
       weather: weatherConversions.weatherCodeConverter(Number(request.body.weatherCode)),
       beaufort: weatherConversions.beaufortConversion(Number(weatherConversions.beaufortCode(request.body.windSpeed))),
-      windDirection: weatherConversions.windDirection(Number(request.body.windDirection))
+      windDirection: weatherConversions.windDirection(Number(request.body.windDirection)),
+      windChill: weatherConversions.windChill(request.body.temp , request.body.windDirection)
 
     };
     console.log(`adding reading | weather code: ${newReading.weatherCode},
-    temp: ${newReading.temp}, wind speed: ${newReading.windSpeed}, pressure: ${newReading.pressure}`);
+    temp: ${newReading.temp}, wind speed: ${newReading.windSpeed}, pressure: ${newReading.pressure}, windChill: ${newReading.windChill}`);
     await readingStore.addReading(station._id, newReading);
     response.redirect("/station/" + station._id);
   }
