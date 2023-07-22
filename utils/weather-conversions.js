@@ -108,5 +108,43 @@ beaufortConversion(beaufortCode) {
       break;
   }
   return label;
+},
+
+windDirection(degree360) {
+  if ((degree360 > 348.75 && degree360 <= 360) || (degree360 >= 0 && degree360 <= 11.25)) {
+    return "N";
+  } else if (degree360 > 11.25 && degree360 <= 33.75) {
+    return "NNE";
+  } else if (degree360 >= 33.75 && degree360 <= 56.25) {
+    return "NE";
+  } else if (degree360 >= 56.25 && degree360 <= 78.75) {
+    return "ENE";
+  } else if (degree360 >= 78.75 && degree360 <= 101.25) {
+    return "E";
+  } else if (degree360 >= 101.25 && degree360 <= 123.75) {
+    return "ESE";
+  } else if (degree360 >= 123.75 && degree360 <= 146.25) {
+    return "SE";
+  } else if (degree360 >= 146.25 && degree360 <= 168.75) {
+    return "SSE";
+  } else if (degree360 >= 168.75 && degree360 <= 191.25) {
+    return "S";
+  } else if (degree360 >= 191.25 && degree360 <= 213.75) {
+    return "SSW";
+  } else if (degree360 >= 213.75 && degree360 <= 236.25) {
+    return "SW";
+  } else if (degree360 >= 236.25 && degree360 <= 258.75) {
+    return "WSW";
+  } else if (degree360 >= 258.75 && degree360 <= 281.25) {
+    return "W";
+  } else if (degree360 >= 281.25 && degree360 <= 303.75) {
+    return "WNW";
+  } else if (degree360 >= 303.75 && degree360 <= 326.25) {
+    return "NW";
+  } else if (degree360 >= 326.25 && degree360 <= 348.75) {
+    return "NNW";
+  }
+  return "err";
+
 }
 };
