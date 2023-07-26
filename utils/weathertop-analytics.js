@@ -21,11 +21,9 @@ export const weathertopAnalytics = {
 
   maxTemp(station) {
     let maxTemp = Number(station.readings[0].temp);
-    console.log('Max temp :' + station.readings[0].temp);
     for (let i = 0; i < station.readings.length; i++) {
       if (Number(station.readings[i].temp) > maxTemp) {
          maxTemp = Number(station.readings[i].temp);
-         console.log('New Max temp :' + station.readings[i].temp);
       }
     }
     return maxTemp;
