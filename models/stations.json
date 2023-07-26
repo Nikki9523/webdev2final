@@ -1,0 +1,11 @@
+{
+  "file": "./models/stations.json",
+  "stations": [
+    {
+      "title": "Tramore",
+      "latitude": "42",
+      "longitude": "43",
+      "_id": "6b9385c9-cb09-4daa-b072-c502390dae3f"
+    }
+  ]
+}
