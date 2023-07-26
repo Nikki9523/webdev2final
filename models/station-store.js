@@ -42,4 +42,9 @@ export const stationStore = {
     db.data.stations = [];
     await db.write();
   },
+  
+  async getStationsByUserId(userid) {
+    await db.read();
+    return db.data.station.filter((station) => station.userid === userid);
+  },
 };
