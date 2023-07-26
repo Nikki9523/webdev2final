@@ -35,11 +35,7 @@ export const stationController = {
       weather: weatherConversions.weatherCodeConverter(Number(request.body.weatherCode)),
       beaufort: weatherConversions.beaufortConversion(Number(weatherConversions.beaufortCode(request.body.windSpeed))),
       windDirection: weatherConversions.windDirection(Number(request.body.windDirection)),
-      windChill: weatherConversions.windChill(request.body.temp, request.body.windSpeed),
-      minTemp: weathertopAnalytics.minTemp(station),
-      maxTemp: weathertopAnalytics.maxTemp(station),
-      minWindSpeed: weathertopAnalytics.minWindSpeed(station),
-      maxWindSpeed: weathertopAnalytics.maxWindSpeed(station)
+      windChill: weatherConversions.windChill(request.body.temp, request.body.windSpeed)
 
     };
     console.log(`adding reading | weather code: ${newReading.weatherCode},
