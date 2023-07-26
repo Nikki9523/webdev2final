@@ -48,4 +48,24 @@ export const weathertopAnalytics = {
     }
     return maxWindSpeed;
   },
+
+  minPressure(station) {
+    let minPressure = Number(station.readings[0].pressure);
+    for (let i = 0; i < station.readings.length; i++) {
+      if (Number(station.readings[i].pressure) < minPressure) {
+         minPressure = Number(station.readings[i].pressure);
+      }
+    }
+    return minPressure;
+  },
+
+  maxPressure(station) {
+    let maxPressure = Number(station.readings[0].pressure);
+    for (let i = 0; i < station.readings.length; i++) {
+      if (Number(station.readings[i].pressure) > maxPressure) {
+         maxPressure = Number(station.readings[i].pressure);
+      }
+    }
+    return maxPressure;
+  }
 }
