@@ -10,23 +10,62 @@ export const weathertopAnalytics = {
     },
 
   minTemp(station) {
-    let minTemp = station.readings[0].temp;
+    let minTemp = Number(station.readings[0].temp);
     for (let i = 0; i < station.readings.length; i++) {
-      if (station.readings[i].temp < minTemp) {
-         minTemp = station.readings[i].temp;
+      if (Number(station.readings[i].temp) < minTemp) {
+         minTemp = Number(station.readings[i].temp);
       }
     }
     return minTemp;
   },
 
   maxTemp(station) {
-    const maxTempTest = 3;
-   /* let maxTemp = station.readings[0].temp;
+    let maxTemp = Number(station.readings[0].temp);
     for (let i = 0; i < station.readings.length; i++) {
-      if (station.readings[i].temp > maxTemp) {
-         maxTemp = station.readings[i].temp;
+      if (Number(station.readings[i].temp) > maxTemp) {
+         maxTemp = Number(station.readings[i].temp);
       }
-    } */
-    return maxTempTest;
-  } 
+    }
+    return maxTemp;
+  },
+
+  minWindSpeed(station) {
+    let minWindSpeed = Number(station.readings[0].windSpeed);
+    for (let i = 0; i < station.readings.length; i++) {
+      if (Number(station.readings[i].windSpeed) < minWindSpeed) {
+         minWindSpeed = Number(station.readings[i].windSpeed);
+      }
+    }
+    return minWindSpeed;
+  },
+
+  maxWindSpeed(station) {
+    let maxWindSpeed = Number(station.readings[0].windSpeed);
+    for (let i = 0; i < station.readings.length; i++) {
+      if (Number(station.readings[i].windSpeed) > maxWindSpeed) {
+         maxWindSpeed = Number(station.readings[i].windSpeed);
+      }
+    }
+    return maxWindSpeed;
+  },
+
+  minPressure(station) {
+    let minPressure = Number(station.readings[0].pressure);
+    for (let i = 0; i < station.readings.length; i++) {
+      if (Number(station.readings[i].pressure) < minPressure) {
+         minPressure = Number(station.readings[i].pressure);
+      }
+    }
+    return minPressure;
+  },
+
+  maxPressure(station) {
+    let maxPressure = Number(station.readings[0].pressure);
+    for (let i = 0; i < station.readings.length; i++) {
+      if (Number(station.readings[i].pressure) > maxPressure) {
+         maxPressure = Number(station.readings[i].pressure);
+      }
+    }
+    return maxPressure;
+  }
 }

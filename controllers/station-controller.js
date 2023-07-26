@@ -8,13 +8,21 @@ export const stationController = {
     const station = await stationStore.getStationById(request.params.id);
     const latestReading = await weathertopAnalytics.getLatestReading(station);
     const minTemp = await weathertopAnalytics.minTemp(station);
-    const maxTemp = await weathertopAnalytics.minTemp(station);
+    const maxTemp = await weathertopAnalytics.maxTemp(station);
+    const minWindSpeed = await weathertopAnalytics.minWindSpeed(station);
+    const maxWindSpeed = await weathertopAnalytics.maxWindSpeed(station);
+    const minPressure = await weathertopAnalytics.minPressure(station);
+    const maxPressure = await weathertopAnalytics.maxPressure(station);
     const viewData = {
       title: "Station",
       station: station,
       latestReading: latestReading,
       minTemp: minTemp,
-      maxTemp: maxTemp
+      maxTemp: maxTemp,
+      minWindSpeed: minWindSpeed,
+      maxWindSpeed: maxWindSpeed,
+      minPressure: minPressure,
+      maxPressure: maxPressure
     };
     response.render("station-view", viewData);
   },
@@ -31,9 +39,7 @@ export const stationController = {
       weather: weatherConversions.weatherCodeConverter(Number(request.body.weatherCode)),
       beaufort: weatherConversions.beaufortConversion(Number(weatherConversions.beaufortCode(request.body.windSpeed))),
       windDirection: weatherConversions.windDirection(Number(request.body.windDirection)),
-      windChill: weatherConversions.windChill(request.body.temp, request.body.windSpeed),
-      minTemp: weathertopAnalytics.minTemp(station),
-      maxTemp: weathertopAnalytics.maxTemp(station)
+      windChill: weatherConversions.windChill(request.body.temp, request.body.windSpeed)
 
     };
     console.log(`adding reading | weather code: ${newReading.weatherCode},
