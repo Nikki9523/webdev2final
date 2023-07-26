@@ -28,4 +28,24 @@ export const weathertopAnalytics = {
     }
     return maxTemp;
   },
+
+  minWindSpeed(station) {
+    let minWindSpeed = Number(station.readings[0].windSpeed);
+    for (let i = 0; i < station.readings.length; i++) {
+      if (Number(station.readings[i].windSpeed) < minWindSpeed) {
+         minWindSpeed = Number(station.readings[i].windSpeed);
+      }
+    }
+    return minWindSpeed;
+  },
+
+  maxWindSpeed(station) {
+    let maxWindSpeed = Number(station.readings[0].windSpeed);
+    for (let i = 0; i < station.readings.length; i++) {
+      if (Number(station.readings[i].windSpeed) > maxWindSpeed) {
+         maxWindSpeed = Number(station.readings[i].windSpeed);
+      }
+    }
+    return maxWindSpeed;
+  },
 }

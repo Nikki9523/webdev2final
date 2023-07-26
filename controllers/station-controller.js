@@ -9,12 +9,16 @@ export const stationController = {
     const latestReading = await weathertopAnalytics.getLatestReading(station);
     const minTemp = await weathertopAnalytics.minTemp(station);
     const maxTemp = await weathertopAnalytics.maxTemp(station);
+    const minWindSpeed = await weathertopAnalytics.minWindSpeed(station);
+    const maxWindSpeed = await weathertopAnalytics.maxWindSpeed(station);
     const viewData = {
       title: "Station",
       station: station,
       latestReading: latestReading,
       minTemp: minTemp,
-      maxTemp: maxTemp
+      maxTemp: maxTemp,
+      minWindSpeed: minWindSpeed,
+      maxWindSpeed: maxWindSpeed
     };
     response.render("station-view", viewData);
   },
@@ -33,7 +37,9 @@ export const stationController = {
       windDirection: weatherConversions.windDirection(Number(request.body.windDirection)),
       windChill: weatherConversions.windChill(request.body.temp, request.body.windSpeed),
       minTemp: weathertopAnalytics.minTemp(station),
-      maxTemp: weathertopAnalytics.maxTemp(station)
+      maxTemp: weathertopAnalytics.maxTemp(station),
+      minWindSpeed: weathertopAnalytics.minWindSpeed(station),
+      maxWindSpeed: weathertopAnalytics.maxWindSpeed(station)
 
     };
     console.log(`adding reading | weather code: ${newReading.weatherCode},
