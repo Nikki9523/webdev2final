@@ -7,8 +7,8 @@ export const dashboardController = {
     const loggedInUser = await accountsController.getLoggedInUser(request);
     const viewData = {
       title: "WeatherTop Dashboard",
-      //stations: await stationStore.getAllStations(),
-      stations: await stationStore.getStationByUserId(loggedInUser._id),
+      //stations: await stationStore.getAllStations(), 
+      stations: await stationStore.getStationsByUserId(loggedInUser._id)
     };
     console.log("dashboard rendering");
     response.render("dashboard-view", viewData);
