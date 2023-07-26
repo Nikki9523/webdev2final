@@ -10,10 +10,10 @@ export const weathertopAnalytics = {
     },
 
   minTemp(station) {
-    let minTemp = station.readings[0].temp;
+    let minTemp = Number(station.readings[0].temp);
     for (let i = 0; i < station.readings.length; i++) {
-      if (station.readings[i].temp < minTemp) {
-         minTemp = station.readings[i].temp;
+      if (Number(station.readings[i].temp) < minTemp) {
+         minTemp = Number(station.readings[i].temp);
       }
     }
     return minTemp;
@@ -27,5 +27,5 @@ export const weathertopAnalytics = {
       }
     }
     return maxTemp;
-  } 
+  },
 }
