@@ -8,7 +8,7 @@ export const stationController = {
     const station = await stationStore.getStationById(request.params.id);
     const latestReading = await weathertopAnalytics.getLatestReading(station);
     const minTemp = await weathertopAnalytics.minTemp(station);
-    const maxTemp = await weathertopAnalytics.minTemp(station);
+    const maxTemp = await weathertopAnalytics.maxTemp(station);
     const viewData = {
       title: "Station",
       station: station,

@@ -20,13 +20,14 @@ export const weathertopAnalytics = {
   },
 
   maxTemp(station) {
-    const maxTempTest = 3;
-   /* let maxTemp = station.readings[0].temp;
+    let maxTemp = Number(station.readings[0].temp);
+    console.log('Max temp :' + station.readings[0].temp);
     for (let i = 0; i < station.readings.length; i++) {
-      if (station.readings[i].temp > maxTemp) {
-         maxTemp = station.readings[i].temp;
+      if (Number(station.readings[i].temp) > maxTemp) {
+         maxTemp = Number(station.readings[i].temp);
+         console.log('New Max temp :' + station.readings[i].temp);
       }
-    } */
-    return maxTempTest;
+    }
+    return maxTemp;
   } 
 }
