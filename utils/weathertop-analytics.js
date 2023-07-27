@@ -10,61 +10,79 @@ export const weathertopAnalytics = {
     },
 
   minTemp(station) {
-    let minTemp = Number(station.readings[0].temp);
+    let minTemp = null;
+    if (station.readings.length > 0) {
+     minTemp = Number(station.readings[0].temp);
     for (let i = 0; i < station.readings.length; i++) {
       if (Number(station.readings[i].temp) < minTemp) {
          minTemp = Number(station.readings[i].temp);
       }
     }
+  }
     return minTemp;
   },
 
   maxTemp(station) {
-    let maxTemp = Number(station.readings[0].temp);
+    let maxTemp = null;
+    if (station.readings.length > 0) {
+     maxTemp = Number(station.readings[0].temp);
     for (let i = 0; i < station.readings.length; i++) {
       if (Number(station.readings[i].temp) > maxTemp) {
          maxTemp = Number(station.readings[i].temp);
       }
     }
+    }
     return maxTemp;
   },
 
   minWindSpeed(station) {
-    let minWindSpeed = Number(station.readings[0].windSpeed);
+    let minWindSpeed = null;
+    if (station.readings.length > 0) {
+     minWindSpeed = Number(station.readings[0].windSpeed);
     for (let i = 0; i < station.readings.length; i++) {
       if (Number(station.readings[i].windSpeed) < minWindSpeed) {
          minWindSpeed = Number(station.readings[i].windSpeed);
       }
     }
+    }
     return minWindSpeed;
   },
 
   maxWindSpeed(station) {
-    let maxWindSpeed = Number(station.readings[0].windSpeed);
+    let maxWindSpeed = null;
+    if (station.readings.length > 0) {
+     maxWindSpeed = Number(station.readings[0].windSpeed);
     for (let i = 0; i < station.readings.length; i++) {
       if (Number(station.readings[i].windSpeed) > maxWindSpeed) {
          maxWindSpeed = Number(station.readings[i].windSpeed);
       }
     }
+    }
     return maxWindSpeed;
   },
 
   minPressure(station) {
-    let minPressure = Number(station.readings[0].pressure);
+    let minPressure = null;
+    if (station.readings.length > 0) {
+     minPressure = Number(station.readings[0].pressure);
     for (let i = 0; i < station.readings.length; i++) {
       if (Number(station.readings[i].pressure) < minPressure) {
          minPressure = Number(station.readings[i].pressure);
       }
     }
+    }
     return minPressure;
   },
 
   maxPressure(station) {
-    let maxPressure = Number(station.readings[0].pressure);
+    let maxPressure = null;
+    if (station.readings.length > 0) {
+     maxPressure = Number(station.readings[0].pressure);
     for (let i = 0; i < station.readings.length; i++) {
       if (Number(station.readings[i].pressure) > maxPressure) {
          maxPressure = Number(station.readings[i].pressure);
       }
+    }
     }
     return maxPressure;
   }
