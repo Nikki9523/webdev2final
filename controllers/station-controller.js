@@ -13,6 +13,7 @@ export const stationController = {
     const maxWindSpeed = await weathertopAnalytics.maxWindSpeed(station);
     const minPressure = await weathertopAnalytics.minPressure(station);
     const maxPressure = await weathertopAnalytics.maxPressure(station);
+    const dateTime = new Date(Date.now());
     const viewData = {
       title: "Station",
       station: station,
@@ -22,7 +23,8 @@ export const stationController = {
       minWindSpeed: minWindSpeed,
       maxWindSpeed: maxWindSpeed,
       minPressure: minPressure,
-      maxPressure: maxPressure
+      maxPressure: maxPressure,
+      dateTime: dateTime
     };
     response.render("station-view", viewData);
   },
@@ -39,7 +41,8 @@ export const stationController = {
       weather: weatherConversions.weatherCodeConverter(Number(request.body.weatherCode)),
       beaufort: weatherConversions.beaufortConversion(Number(weatherConversions.beaufortCode(request.body.windSpeed))),
       windDirection: weatherConversions.windDirection(Number(request.body.windDirection)),
-      windChill: weatherConversions.windChill(request.body.temp, request.body.windSpeed)
+      windChill: weatherConversions.windChill(request.body.temp, request.body.windSpeed),
+      dateTime: new Date(Date.now())//Date.now()
 
     };
     console.log(`adding reading | weather code: ${newReading.weatherCode},

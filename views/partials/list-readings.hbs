@@ -1,6 +1,7 @@
 <table class="table is-fullwidth">
     <thead>
         <tr>
+            <th>Date and Time</th>
             <th>weatherCode</th>
             <th>Temperature Celsius</th>
             <th>Wind Speed</th>
@@ -10,6 +11,9 @@
     <tbody>
         {{#each station.readings}}
         <tr>
+            <td>
+               {{dateTime}}
+            </td>
             <td>
                 {{weatherCode}}
             </td>
