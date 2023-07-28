@@ -9,6 +9,8 @@ export const weathertopAnalytics = {
       return latestReading;
     },
 
+    //min/max readings
+
   minTemp(station) {
     let minTemp = null;
     if (station.readings.length > 0) {
@@ -85,5 +87,25 @@ export const weathertopAnalytics = {
     }
     }
     return maxPressure;
+  },
+
+  //trends
+
+  // 1. Up arrow: 3 latest readings are rising
+  //2. Down arrow: 3 latest readings are falling
+  // neutral: neither 1 or 2
+
+  checkReadingTrend(station){
+    let trend = null;
+    let readingLength = station.readings.length;
+    if (readingLength >= 3) {
+      //rising
+      if((station.readings[readingLength - 1].temp >  station.readings[readingLength - 2].temp) && station.readings[readingLength - 2].temp >station.readings[readingLength - 3].temp ){
+       return trend = "rising";
+      }else{
+        return trend = "not rising"
+      }
+    }
   }
+  
 }
