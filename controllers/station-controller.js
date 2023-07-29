@@ -13,7 +13,7 @@ export const stationController = {
     const maxWindSpeed = await weathertopAnalytics.maxWindSpeed(station);
     const minPressure = await weathertopAnalytics.minPressure(station);
     const maxPressure = await weathertopAnalytics.maxPressure(station);
-    const trend = await weathertopAnalytics.checkReadingTrend(station);
+    const tempTrend = await weathertopAnalytics.checkTempTrend(station);
 
     const viewData = {
       title: "Station",
@@ -25,7 +25,7 @@ export const stationController = {
       maxWindSpeed: maxWindSpeed,
       minPressure: minPressure,
       maxPressure: maxPressure,
-      trend: trend
+      tempTrend: tempTrend
     };
     response.render("station-view", viewData);
   },

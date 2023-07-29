@@ -95,16 +95,20 @@ export const weathertopAnalytics = {
   //2. Down arrow: 3 latest readings are falling
   // neutral: neither 1 or 2
 
-  checkReadingTrend(station){
-    let trend = null;
+  checkTempTrend(station){
+    let tempTrend = null;
     let readingLength = station.readings.length;
     if (readingLength >= 3) {
       //rising
-      if((station.readings[readingLength - 1].temp >  station.readings[readingLength - 2].temp) && station.readings[readingLength - 2].temp >station.readings[readingLength - 3].temp ){
-       return trend = "rising";
-      }else{
-        return trend = "not rising"
+      if((station.readings[readingLength - 1].temp >  station.readings[readingLength - 2].temp) && station.readings[readingLength - 2].temp > station.readings[readingLength - 3].temp ){
+       return tempTrend = "rising";
+      }else if((station.readings[readingLength - 1].temp <  station.readings[readingLength - 2].temp) && station.readings[readingLength - 2].temp < station.readings[readingLength - 3].temp ){
+        return tempTrend = "falling";
+    }else{
+        return tempTrend = "not rising";
       }
+    }else{
+      return tempTrend = "error - not enough data"
     }
   }
   
