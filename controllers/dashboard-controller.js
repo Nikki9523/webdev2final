@@ -7,7 +7,6 @@ export const dashboardController = {
     const loggedInUser = await accountsController.getLoggedInUser(request);
     const viewData = {
       title: "WeatherTop Dashboard",
-      //stations: await stationStore.getAllStations(), 
       stations: await stationStore.getStationsByUserId(loggedInUser._id)
     };
     console.log("dashboard rendering");
@@ -25,6 +24,13 @@ export const dashboardController = {
     console.log(`adding station ${newStation.title}, latitude:  ${newStation.latitude},
      longitude:  ${newStation.longitude}`);
     await stationStore.addStation(newStation);
+    response.redirect("/dashboard");
+  },
+
+  async deleteStation(request, response) {
+const stationId = request.params.id;
+    console.log(`deleting station ${stationId}`);
+    await stationStore.deleteStationbyId(stationId);
     response.redirect("/dashboard");
   },
 };
