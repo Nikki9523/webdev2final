@@ -4,14 +4,17 @@
             <h1> Station Name </h1>
             {{station.title}}
     <h4>
+    {{> icons/weather-icons/location}} <br>
     Latitude: {{station.latitude}} <br>
-    Longitude: {{station.longitude}}
+    Longitude: {{station.longitude}} <br>
+    
   </h4>
         </div>
     </div>
     <div class="column is-one-fifth">
         <div class="card-content has-background-black has-text-white has-text-centered">
             <h1> Weather </h1>
+            {{> icons/weather-icons/weather-code}} <br>
             {{latestReading.weather}} <br>
            
         </div>
@@ -19,13 +22,20 @@
     <div class="column is-one-fifth">
         <div class="card-content has-background-black has-text-white has-text-centered">
             <h1> Temperature </h1>
+            {{> icons/weather-icons/temperature}}
             {{latestReading.temp}} <span>C</span>
             <br>
             {{latestReading.temperatureFahrenheit}} <span>F</span>
             <br>
             Min Temperature : {{minTemp}} <br>
             Max Temperature: {{maxTemp}}<br>
-            trend: {{tempTrend}}
+            trend: {{tempTrend}} <br>
+
+<!--{{#if tempTrend}}
+ {{>icons/trends-icons/up-arrow}}
+{{else}}
+  {{>icons/trends-icons/down-arrow}}
+{{/if}} -->
 
            
         </div>
@@ -33,6 +43,7 @@
     <div class="column is-one-fifth">
         <div class="card-content has-background-black has-text-white has-text-centered">
             <h1> Pressure </h1>
+            {{> icons/weather-icons/pressure}}
             {{latestReading.pressure}} hpa <br>
             min pressure: {{minPressure}} <br>
             maxPressure: {{maxPressure}} <br>
@@ -42,6 +53,7 @@
     <div class="column is-one-fifth">
         <div class="card-content has-background-black has-text-white has-text-centered">
             <h1> Wind Speed </h1>
+            {{> icons/weather-icons/wind}}
             speed: {{latestReading.windSpeed}} <br>
             conditions : {{latestReading.beaufort}} <br>
             wind direction: {{latestReading.windDirection}} <br>

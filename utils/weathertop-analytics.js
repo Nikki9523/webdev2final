@@ -93,17 +93,17 @@ export const weathertopAnalytics = {
     let tempTrend = null;
     let readingLength = station.readings.length;
     if (readingLength >= 3) {
-      //rising
       if((station.readings[readingLength - 1].temp >  station.readings[readingLength - 2].temp) && station.readings[readingLength - 2].temp > station.readings[readingLength - 3].temp ){
-       return tempTrend = "rising";
+        tempTrend = "rising";
       }else if((station.readings[readingLength - 1].temp <  station.readings[readingLength - 2].temp) && station.readings[readingLength - 2].temp < station.readings[readingLength - 3].temp ){
-        return tempTrend = "falling";
+         tempTrend = "falling";
     }else{
-        return tempTrend = "neutral";
+         tempTrend = "neutral";
       }
     }else{
-      return tempTrend = "error - not enough data"
+       tempTrend = "error - not enough data"
     }
+    return tempTrend;
   },
 
   checkWindSpeedTrend(station){
