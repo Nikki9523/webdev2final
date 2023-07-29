@@ -9,6 +9,8 @@ export const weathertopAnalytics = {
       return latestReading;
     },
 
+    //min/max readings
+
   minTemp(station) {
     let minTemp = null;
     if (station.readings.length > 0) {
@@ -85,5 +87,56 @@ export const weathertopAnalytics = {
     }
     }
     return maxPressure;
-  }
+  },
+
+  checkTempTrend(station){
+    let tempTrend = null;
+    let readingLength = station.readings.length;
+    if (readingLength >= 3) {
+      //rising
+      if((station.readings[readingLength - 1].temp >  station.readings[readingLength - 2].temp) && station.readings[readingLength - 2].temp > station.readings[readingLength - 3].temp ){
+       return tempTrend = "rising";
+      }else if((station.readings[readingLength - 1].temp <  station.readings[readingLength - 2].temp) && station.readings[readingLength - 2].temp < station.readings[readingLength - 3].temp ){
+        return tempTrend = "falling";
+    }else{
+        return tempTrend = "neutral";
+      }
+    }else{
+      return tempTrend = "error - not enough data"
+    }
+  },
+
+  checkWindSpeedTrend(station){
+    let windSpeedTrend = null;
+    let readingLength = station.readings.length;
+    if (readingLength >= 3) {
+      //rising
+      if((station.readings[readingLength - 1].windSpeed >  station.readings[readingLength - 2].windSpeed) && station.readings[readingLength - 2].windSpeed > station.readings[readingLength - 3].windSpeed ){
+       return windSpeedTrend = "rising";
+      }else if((station.readings[readingLength - 1].windSpeed <  station.readings[readingLength - 2].windSpeed) && station.readings[readingLength - 2].windSpeed < station.readings[readingLength - 3].windSpeed ){
+        return windSpeedTrend = "falling";
+    }else{
+        return windSpeedTrend = "neutral";
+      }
+    }else{
+      return windSpeedTrend = "error - not enough data"
+    }
+  },
+
+  checkPressureTrend(station){
+    let pressureTrend = null;
+    let readingLength = station.readings.length;
+    if (readingLength >= 3) {
+      if((station.readings[readingLength - 1].pressure >  station.readings[readingLength - 2].pressure) && station.readings[readingLength - 2].pressure > station.readings[readingLength - 3].pressure ){
+       return pressureTrend = "rising";
+      }else if((station.readings[readingLength - 1].pressure <  station.readings[readingLength - 2].pressure) && station.readings[readingLength - 2].pressure < station.readings[readingLength - 3].pressure ){
+        return pressureTrend = "falling";
+    }else{
+        return pressureTrend = "neutral";
+      }
+    }else{
+      return pressureTrend = "error - not enough data"
+    }
+  },
+  
 }
