@@ -56,5 +56,13 @@ export const stationController = {
     temp: ${newReading.temp}, wind speed: ${newReading.windSpeed}, pressure: ${newReading.pressure}, windChill: ${newReading.windChill}`);
     await readingStore.addReading(station._id, newReading);
     response.redirect("/station/" + station._id);
-  }
+  },
+
+  async deleteReading(request, response) {
+    const stationId = request.params.stationId;
+    const readingId = request.params.readingId;
+    console.log(`Deleting reading ${readingId} from Station ${stationId}`);
+    await readingStore.deleteReadingById(request.params.readingId);
+    response.redirect("/station/" + stationId);
+  },
 }
