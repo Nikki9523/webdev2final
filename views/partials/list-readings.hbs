@@ -28,6 +28,11 @@
             <td>
                 {{pressure}}
             </td>
+
+            <td>
+                <a href="/station/{{../station._id}}/deletereading/{{_id}}" class="button">
+                    {{>icons/delete-icon}}
+            </td>
         </tr>
         {{/each}}
     </tbody>
