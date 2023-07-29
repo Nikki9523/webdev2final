@@ -49,4 +49,12 @@ export const accountsController = {
     const userEmail = request.cookies.station;
     return await userStore.getUserByEmail(userEmail);
   },
+
+  async viewUserDetails(request, response) {
+    const user = await userStore.getUserByEmail(request.body.email);
+    const viewData = {
+      title: "View user info",
+    };
+    response.render("account-view", viewData);
+  },
 };
