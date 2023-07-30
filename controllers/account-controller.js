@@ -51,10 +51,19 @@ export const accountsController = {
   },
 
   async viewUserDetails(request, response) {
-    const user = await userStore.getUserByEmail(request.body.email);
+    const userEmail = request.cookies.station;
+   const user = await userStore.getUserByEmail(userEmail);
+   const firstName = user.firstName;
+   const lastName = user.lastName
+   const email = user.email;
+   console.log(user);
     const viewData = {
       title: "View user info",
+      email: email,
+     firstName: firstName,
+     lastName: lastName
     };
+    console.log(firstName, lastName, email);
     response.render("account-view", viewData);
   },
 };
