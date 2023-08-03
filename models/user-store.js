@@ -26,6 +26,14 @@ export const userStore = {
     await db.read();
     return db.data.users.find((user) => user.email === email);
   },
+    
+  async updateUser(userId, updatedUser) {
+    const user = await this.getUserById(userId);
+    user.firstName = updatedUser.firstName;
+    user.lastName = updatedUser.lastName;
+    user.email = updatedUser.email;
+    await db.write();
+  },
 
   async deleteUserById(id) {
     await db.read();
