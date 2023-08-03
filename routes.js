@@ -11,14 +11,9 @@ router.get("/", accountsController.index);
 router.get("/login", accountsController.login);
 router.get("/signup", accountsController.signup);
 router.get("/logout", accountsController.logout);
-//router.get("/account", accountsController.viewUserDetails);
-//router.get("/edituserdetails", accountsController.editUserDetails);
 router.post("/register", accountsController.register);
-//router.post("/account/updatedetails", accountsController.updateUserDetails);
-
 router.get("/edituser/:_id", userController.index);
 router.post("/updateuser/:_id", userController.update);
-
 router.post("/authenticate", accountsController.authenticate);
 router.get("/dashboard", dashboardController.index);
 router.post("/dashboard/addstation", dashboardController.addStation);
