@@ -7,6 +7,13 @@
       "email": "test",
       "password": "test",
       "_id": "70521951-8359-4c7e-8366-2a8205f92cde"
+    },
+    {
+      "firstName": "Nicola",
+      "lastName": "Stack",
+      "email": "nicola@test.com",
+      "password": "test",
+      "_id": "c85c0656-a386-49b7-a38a-7c2f9d3f5455"
     }
   ]
 }
