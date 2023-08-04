@@ -31,7 +31,8 @@ export const userStore = {
     const user = await this.getUserById(userId);
     user.firstName = updatedUser.firstName;
     user.lastName = updatedUser.lastName;
-    user.email = updatedUser.email;
+    user.password = updatedUser.password;
+    user.email = user.email;
     await db.write();
   },
 

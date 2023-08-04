@@ -50,20 +50,25 @@ export const accountsController = {
     return await userStore.getUserByEmail(userEmail);
   },
 
-  async viewUserDetails(request, response) {
-    const userEmail = request.cookies.station;
-   const user = await userStore.getUserByEmail(userEmail);
-   const firstName = user.firstName;
-   const lastName = user.lastName
-   const email = user.email;
-   console.log(user);
-    const viewData = {
-      title: "View user info",
-      email: email,
-     firstName: firstName,
-     lastName: lastName
-    };
-    console.log(firstName, lastName, email);
-    response.render("account-view", viewData);
-  },
+
+  async userDetails(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+      const viewData = {
+        title: "Edit User Details",
+        user: loggedInUser,
+      };
+      response.render("user-details", viewData);
+    },
+
+  async updateUserDetails(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+      const userId = await userStore.getUserById(loggedInUser._id);
+        const updatedUser = {
+          firstName: request.body.firstName,
+          lastName: request.body.lastName,
+          password: request.body.password,
+        };
+      await userStore.updateUser(userId._id, updatedUser);
+      response.redirect("/Account");
+    }
 };
