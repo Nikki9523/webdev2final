@@ -22,3 +22,4 @@ router.get("/about", aboutController.index);
 
 router.get("/account", accountsController.userDetails);
 router.post("/profile/updateprofile/:_id", accountsController.updateUserDetails);
+router.post("/dashboard/addreport", dashboardController.addreport);

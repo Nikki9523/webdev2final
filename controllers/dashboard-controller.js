@@ -36,4 +36,14 @@ const stationId = request.params.id;
     await stationStore.deleteStationbyId(stationId);
     response.redirect("/dashboard");
   },
+
+  async addreport(request, response) {
+    console.log("rendering new report");
+    const report = {};
+    const viewData = {
+      title: "Weather Report",
+      reading : report
+    };
+    response.render("dashboard", viewData);
+  },
 };
