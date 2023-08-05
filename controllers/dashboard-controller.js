@@ -10,6 +10,9 @@ export const dashboardController = {
       stations: await stationStore.getStationsByUserId(loggedInUser._id)
     };
     console.log("dashboard rendering");
+    for (const station of viewData.stations) {
+      viewData.stations.sort((a, b) => (a.title > b.title ? 1 : -1));
+    }
     response.render("dashboard-view", viewData);
   },
 
