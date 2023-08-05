@@ -48,12 +48,14 @@ const stationId = request.params.id;
     };
     response.render("dashboard-view", viewData);
   },
+
   async addreport(request, response) {
     console.log("rendering new report");
     let report = {};
-    console.log("ok");
-    const result = await axios.get(oneCallRequest);
-    console.log("ok");
+    const lat = request.body.lat;
+    const lng = request.body.lng;
+    const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&appid=876f7ff7184f8ea886ab8a25dbece01d`
+    const result = await axios.get(requestUrl);
     if (result.status == 200) {
       const reading = result.data.current;
       report.code = reading.weather[0].id;
