@@ -1,7 +1,6 @@
 import { stationStore } from "../models/station-store.js";
 import { accountsController } from "./account-controller.js";
 import axios from "axios";
-const oneCallRequest = `https://api.openweathermap.org/data/2.5/onecall?lat=52.160858&lon=-7.152420&units=metric&appid=876f7ff7184f8ea886ab8a25dbece01d`
 
 export const dashboardController = {
 
