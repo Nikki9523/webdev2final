@@ -54,11 +54,20 @@ export const accountsController = {
   async userDetails(request, response) {
     const loggedInUser = await accountsController.getLoggedInUser(request);
       const viewData = {
-        title: "Edit User Details",
+        title: "View User Details",
         user: loggedInUser,
       };
-      response.render("user-details", viewData);
+      response.render("account-view", viewData);
     },
+
+    async editUserDetails(request, response) {
+      const loggedInUser = await accountsController.getLoggedInUser(request);
+        const viewData = {
+          title: "Edit User Details",
+          user: loggedInUser,
+        };
+        response.render("user-details", viewData);
+      },
 
   async updateUserDetails(request, response) {
     const loggedInUser = await accountsController.getLoggedInUser(request);
