@@ -1,0 +1,50 @@
+ <section class="section">
+    <h2 class="subtitle">Enter location for reading</h2>
+    <form action="/station/{{station._id}}/addreport" method="POST">
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <input class="input" type="text" placeholder="52.160858" name="lat">
+          </div>
+          <div class="field">
+            <input class="input" type="text" placeholder="-7.152420" name="lng">
+          </div>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <button class="button is-link">Add Reading</button>
+      </div>
+    </form>
+  </section>
+  <div class="box" id="chart"></div>
+ 
+  <script>
+    const data = {
+      labels: [
+        {{#each readings.[0].trendLabels}}
+          "{{this}}",
+        {{/each}}
+      ],
+      datasets: [
+        {
+          name: "Temperature", type: "line",
+          values: [
+            {{#each readings.[0].tempTrend}}
+              {{this}},
+            {{/each}}
+          ]
+        }
+      ]
+    };
+   
+     console.log("Data labels:", data.labels);
+  console.log("Data values:", data.datasets[0].values);
+
+    const chart = new frappe.Chart("#chart", {
+      title: "Temperature Trend",
+      data: data,
+      type: 'line',
+      height: 250,
+    })
+  </script>
+</section>
