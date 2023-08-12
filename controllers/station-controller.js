@@ -89,10 +89,14 @@ export const stationController = {
       report.windDirection = reading.wind_deg;
 
       report.tempTrend = [];
+      report.windSpeedTrend = [];
+      report.pressureTrend = [];
       report.trendLabels = [];
       const trends = result.data.daily;
       for (let i = 0; i < trends.length; i++) {
         report.tempTrend.push(trends[i].temp.day);
+        report.windSpeedTrend.push(trends[i].wind_speed);
+        report.pressureTrend.push(trends[i].pressure);
         const date = new Date(trends[i].dt * 1000);
         report.trendLabels.push(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`);
         report.date = date;
