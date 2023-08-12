@@ -4,4 +4,4 @@
 # Add field validations - Done
 # Make readings view nicer
 # Add latest readings to dashboard view - Won't do
-# Trends icons
+# Trends icons - Done
