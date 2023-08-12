@@ -139,4 +139,20 @@ export const weathertopAnalytics = {
     }
   },
 
+  risingTrendFunc(trendFunction){
+    let risingTrend = false;
+    if(trendFunction === "rising"){
+      risingTrend = true;
+    }
+    return risingTrend;
+  },
+
+  fallingTrendFunc(trendFunction){
+    let fallingTrend = false;
+    if(trendFunction === "falling"){
+      fallingTrend = true;
+    }
+    return fallingTrend;
+
+  }
 }

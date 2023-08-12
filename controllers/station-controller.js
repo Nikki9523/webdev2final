@@ -20,6 +20,12 @@ export const stationController = {
     const tempTrend = await weathertopAnalytics.checkTempTrend(station);
     const windSpeedTrend = await weathertopAnalytics.checkWindSpeedTrend(station);
     const pressureTrend = await weathertopAnalytics.checkPressureTrend(station);
+    const risingTrendTemp = await weathertopAnalytics.risingTrendFunc(tempTrend);
+    const fallingTrendTemp = await weathertopAnalytics.fallingTrendFunc(tempTrend);
+    const risingTrendWindSpeed = await weathertopAnalytics.risingTrendFunc(windSpeedTrend);
+    const fallingTrendWindSpeed = await weathertopAnalytics.fallingTrendFunc(windSpeedTrend);
+    const risingTrendPressure = await weathertopAnalytics.risingTrendFunc(pressureTrend);
+    const fallingTrendPressure = await weathertopAnalytics.fallingTrendFunc(pressureTrend);
 
     const viewData = {
       title: "Station",
@@ -34,7 +40,13 @@ export const stationController = {
       tempTrend: tempTrend,
       windSpeedTrend: windSpeedTrend,
       pressureTrend: pressureTrend,
-      readings: readings
+      readings: readings,
+      risingTrendTemp: risingTrendTemp,
+      fallingTrendTemp: fallingTrendTemp,
+      risingTrendWindSpeed: risingTrendWindSpeed,
+      fallingTrendWindSpeed: fallingTrendWindSpeed,
+      risingTrendPressure: risingTrendPressure,
+      fallingTrendPressure: fallingTrendPressure
     };
     response.render("station-view", viewData);
   },
