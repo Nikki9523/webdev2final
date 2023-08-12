@@ -14,6 +14,20 @@
       "email": "nicola@test.com",
       "password": "test",
       "_id": "c85c0656-a386-49b7-a38a-7c2f9d3f5455"
+    },
+    {
+      "firstName": "a",
+      "lastName": "a",
+      "email": "a",
+      "password": "a",
+      "_id": "4207c258-90ce-4b2e-b997-c450ec34be5c"
+    },
+    {
+      "firstName": "a",
+      "lastName": "a",
+      "email": "a",
+      "password": "a",
+      "_id": "70c02e57-e141-4064-901c-16630145094d"
     }
   ]
 }

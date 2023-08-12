@@ -1,28 +1,29 @@
-{{> menu active="Account"}}
-
+{{> menu active="account"}}
 {{> user-info}}
 
 <section class="content box">
     <div class="columns">
         <div class="column is-half">
-            <form action="/profile/updateprofile/{{user._id}}" method="POST">
+            <form action="/account/updateaccount/{{user._id}}" method="POST">
                 <h3 class="subtitle">{{title}}</h3>
                 <div class="field">
                     <label class="label">Email</label>
-                    <input class="input" placeholder="{{user.email}}" name="email" value="{{user.email}}">
+                    <input class="input" placeholder="{{user.email}}" name="email" value="{{user.email}}" disabled>
                 </div>
                 <div class="field">
                     <label class="label">First Name</label>
-                    <input class="input" placeholder="{{user.firstName}}" name="firstName" value="{{user.firstName}}">
-
+                    <input class="input" placeholder="{{user.firstName}}" name="firstName" value="{{user.firstName}}"
+                        required>
                 </div>
                 <div class="field">
                     <label class="label">Last Name</label>
-                    <input class="input" placeholder="{{user.email}}" name="lastName" value="{{lastName}}">
+                    <input class="input" placeholder="{{user.lastName}}" name="lastName" value="{{user.lastName}}"
+                        required>
                 </div>
                 <div class="field">
                     <label class="label">Password</label>
-                    <input id="password" class="input" type="password" name="password" value="{{user.password}}">
+                    <input id="password" class="input" type="password" name="password" value="{{user.password}}"
+                        required>
                 </div>
                 <div class="column">
                     <button class="button is-primary">Update User Info</button>

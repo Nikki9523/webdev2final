@@ -21,5 +21,7 @@ router.get("/station/:id", stationController.index);
 router.get("/about", aboutController.index);
 
 router.get("/account", accountsController.userDetails);
-router.post("/profile/updateprofile/:_id", accountsController.updateUserDetails);
+router.get("/account/edit", accountsController.editUserDetails);
+router.post("/account/updateaccount/:_id", accountsController.updateUserDetails);
 router.post("/dashboard/addreport", dashboardController.addreport);
+router.post("/station/:id/addreport", stationController.addReport);

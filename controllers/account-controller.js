@@ -36,7 +36,8 @@ export const accountsController = {
 
   async authenticate(request, response) {
     const user = await userStore.getUserByEmail(request.body.email);
-    if (user) {
+    const password = request.body.password;
+    if (user && password === user.password) {
       response.cookie("station", user.email);
       console.log(`logging in ${user.email}`);
       response.redirect("/dashboard");
@@ -53,22 +54,31 @@ export const accountsController = {
 
   async userDetails(request, response) {
     const loggedInUser = await accountsController.getLoggedInUser(request);
-      const viewData = {
-        title: "Edit User Details",
-        user: loggedInUser,
-      };
-      response.render("user-details", viewData);
-    },
+    const viewData = {
+      title: "View User Details",
+      user: loggedInUser,
+    };
+    response.render("account-view", viewData);
+  },
+
+  async editUserDetails(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+    const viewData = {
+      title: "Edit User Details",
+      user: loggedInUser,
+    };
+    response.render("user-details", viewData);
+  },
 
   async updateUserDetails(request, response) {
     const loggedInUser = await accountsController.getLoggedInUser(request);
-      const userId = await userStore.getUserById(loggedInUser._id);
-        const updatedUser = {
-          firstName: request.body.firstName,
-          lastName: request.body.lastName,
-          password: request.body.password,
-        };
-      await userStore.updateUser(userId._id, updatedUser);
-      response.redirect("/Account");
-    }
+    const userId = await userStore.getUserById(loggedInUser._id);
+    const updatedUser = {
+      firstName: request.body.firstName,
+      lastName: request.body.lastName,
+      password: request.body.password,
+    };
+    await userStore.updateUser(userId._id, updatedUser);
+    response.redirect("/Account");
+  }
 };

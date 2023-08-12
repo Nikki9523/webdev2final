@@ -1,77 +1,13 @@
 {{> menu active="dashboard"}}
 
 <section class="section">
-  {{> list-stations}}
   {{> add-station}}
 </section>
 
-<div class="content box">
-    <div id="map">
-</div>
-<script>
-  const map = L.map('map').setView([52.160858, -7.152420], 6);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-{{#each stations}}
-  L.marker([{{latitude}}, {{longitude}}]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
-     {{/each}}
-</script>
+<section class="section">
+  {{> list-stations}}
+</section>
 
-<section class="box has-text-centered">
-  <h3 class="is-3 title">
-    Weather Readings
-  </h3>
-  <div class="section">
-    {{> reading-table}}
-  </div>
-  <section class="section">
-    <h2 class="subtitle">Enter location for reading</h2>
-    <form action="/dashboard/addreport" method="POST">
-      <div class="field is-horizontal">
-        <div class="field-body">
-          <div class="field">
-            <input class="input" type="text" placeholder="52.160858" name="lat">
-          </div>
-          <div class="field">
-            <input class="input" type="text" placeholder="-7.152420" name="lng">
-          </div>
-        </div>
-      </div>
-      <div class="field is-grouped">
-        <button class="button is-link">Add Reading</button>
-      </div>
-    </form>
-  </section>
-  <div class="box" id="chart"></div>
-
-  <script>
-    const data = {
-      labels: [
-        {{#each reading.trendLabels}}
-          "{{this}}",
-        {{/each}}
-      ],
-      datasets: [
-        {
-          name: "Temperature", type: "line",
-          values: [
-            {{#each reading.tempTrend}}
-              {{this}},
-            {{/each}}
-          ]
-        }
-      ]
-    }
-
-    const chart = new frappe.Chart("#chart", {
-      title: "Temperature Trend",
-      data: data,
-      type: 'line',
-      height: 250,
-    })
-  </script>
+<section class="section">
+  {{>station-map}}
 </section>

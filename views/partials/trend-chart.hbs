@@ -1,0 +1,113 @@
+ <section class="section">
+    <h2 class="subtitle">Enter location for reading</h2>
+    <form action="/station/{{station._id}}/addreport" method="POST">
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <input class="input" type="text" placeholder="52.160858" name="lat">
+          </div>
+          <div class="field">
+            <input class="input" type="text" placeholder="-7.152420" name="lng">
+          </div>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <button class="button is-link">Add Reading</button>
+      </div>
+    </form>
+  </section>
+
+  <section>
+  <div class="box" id="chartTemp"></div>
+  <div class="box" id="chartWindSpeed"></div>
+   <div class="box" id="chartPressure"></div>
+ 
+  <script>
+    const dataTemp = {
+      labels: [
+        {{#each latestReading.trendLabels}}
+          "{{this}}",
+        {{/each}}
+      ],
+      datasets: [
+        {
+          name: "Temperature", type: "line",
+          values: [
+            {{#each latestReading.tempTrend}}
+              {{this}},
+            {{/each}}
+          ]
+        }
+      ]
+    };
+   
+     console.log("Data labels:", dataTemp.labels);
+  console.log("Data values:", dataTemp.datasets[0].values);
+
+    const chart = new frappe.Chart("#chartTemp", {
+      title: "Temperature Trend",
+      data: dataTemp,
+      type: 'line',
+      height: 250,
+    })
+    </script>
+
+
+
+
+
+    <script>
+     const dataWind = {
+      labels: [
+        {{#each latestReading.trendLabels}}
+          "{{this}}",
+        {{/each}}
+      ],
+      datasets: [
+        {
+          name: "Wind Speed", type: "line",
+          values: [
+            {{#each latestReading.windSpeedTrend}}
+              {{this}},
+            {{/each}}
+          ]
+        }
+      ]
+    };
+   
+    const chartWindSpeed = new frappe.Chart("#chartWindSpeed", {
+      title: "Wind Speed Trend",
+      data: dataWind,
+      type: 'line',
+      height: 250,
+    })
+
+    </script>
+
+ <script>
+     const dataPressure = {
+      labels: [
+        {{#each latestReading.trendLabels}}
+          "{{this}}",
+        {{/each}}
+      ],
+      datasets: [
+        {
+          name: "Pressure", type: "line",
+          values: [
+            {{#each latestReading.pressureTrend}}
+              {{this}},
+            {{/each}}
+          ]
+        }
+      ]
+    };
+   
+    const chartPressure = new frappe.Chart("#chartPressure", {
+      title: "PressureTrend",
+      data: dataPressure,
+      type: 'line',
+      height: 250,
+    })
+    </script>
+    </section>

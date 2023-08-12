@@ -2,10 +2,14 @@ import { stationStore } from "../models/station-store.js";
 import { readingStore } from "../models/reading-store.js";
 import { weathertopAnalytics } from "../utils/weathertop-analytics.js";
 import { weatherConversions } from "../utils/weather-conversions.js";
+import axios from "axios";
 
 export const stationController = {
   async index(request, response) {
     const station = await stationStore.getStationById(request.params.id);
+    const readings = await readingStore.getReadingsByStationId(request.params.id);
+    //  console.log("hi", readings);
+    //  console.log(readings[0].tempTrend, readings[0].trendLabels);
     const latestReading = await weathertopAnalytics.getLatestReading(station);
     const minTemp = await weathertopAnalytics.minTemp(station);
     const maxTemp = await weathertopAnalytics.maxTemp(station);
@@ -16,6 +20,12 @@ export const stationController = {
     const tempTrend = await weathertopAnalytics.checkTempTrend(station);
     const windSpeedTrend = await weathertopAnalytics.checkWindSpeedTrend(station);
     const pressureTrend = await weathertopAnalytics.checkPressureTrend(station);
+    const risingTrendTemp = await weathertopAnalytics.risingTrendFunc(tempTrend);
+    const fallingTrendTemp = await weathertopAnalytics.fallingTrendFunc(tempTrend);
+    const risingTrendWindSpeed = await weathertopAnalytics.risingTrendFunc(windSpeedTrend);
+    const fallingTrendWindSpeed = await weathertopAnalytics.fallingTrendFunc(windSpeedTrend);
+    const risingTrendPressure = await weathertopAnalytics.risingTrendFunc(pressureTrend);
+    const fallingTrendPressure = await weathertopAnalytics.fallingTrendFunc(pressureTrend);
 
     const viewData = {
       title: "Station",
@@ -29,7 +39,14 @@ export const stationController = {
       maxPressure: maxPressure,
       tempTrend: tempTrend,
       windSpeedTrend: windSpeedTrend,
-      pressureTrend: pressureTrend
+      pressureTrend: pressureTrend,
+      readings: readings,
+      risingTrendTemp: risingTrendTemp,
+      fallingTrendTemp: fallingTrendTemp,
+      risingTrendWindSpeed: risingTrendWindSpeed,
+      fallingTrendWindSpeed: fallingTrendWindSpeed,
+      risingTrendPressure: risingTrendPressure,
+      fallingTrendPressure: fallingTrendPressure
     };
     response.render("station-view", viewData);
   },
@@ -65,4 +82,40 @@ export const stationController = {
     await readingStore.deleteReadingById(request.params.readingId);
     response.redirect("/station/" + stationId);
   },
+
+  async addReport(request, response) {
+    console.log("rendering new report");
+    let report = {};
+    let station = await stationStore.getStationById(request.params.id);
+    const stationId = request.params.id;
+    const lat = request.body.lat;
+    const lng = request.body.lng;
+    const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&appid=876f7ff7184f8ea886ab8a25dbece01d`
+    const result = await axios.get(requestUrl);
+    if (result.status == 200) {
+      const reading = result.data.current;
+      report.weatherCode = reading.weather[0].id;
+      report.temp = reading.temp;
+      report.windSpeed = reading.wind_speed;
+      report.pressure = reading.pressure;
+      report.windDirection = reading.wind_deg;
+
+      report.tempTrend = [];
+      report.windSpeedTrend = [];
+      report.pressureTrend = [];
+      report.trendLabels = [];
+      const trends = result.data.daily;
+      for (let i = 0; i < trends.length; i++) {
+        report.tempTrend.push(trends[i].temp.day);
+        report.windSpeedTrend.push(trends[i].wind_speed);
+        report.pressureTrend.push(trends[i].pressure);
+        const date = new Date(trends[i].dt * 1000);
+        report.trendLabels.push(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`);
+        report.date = date;
+      }
+      await readingStore.addReading(stationId, report);
+    }
+
+    response.redirect("/station/" + stationId);
+  }
 }
