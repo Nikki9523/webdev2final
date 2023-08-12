@@ -1,22 +1,13 @@
 {{> menu active="dashboard"}}
 
 <section class="section">
-  {{> list-stations}}
   {{> add-station}}
 </section>
 
-<div class="content box">
-    <div id="map">
-</div>
-<script>
-  const map = L.map('map').setView([52.160858, -7.152420], 6);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-{{#each stations}}
-  L.marker([{{latitude}}, {{longitude}}]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
-     {{/each}}
-</script>
+<section class="section">
+   {{> list-stations}}
+</section>
+
+<section class="section">
+  {{>station-map}}
+</section>
