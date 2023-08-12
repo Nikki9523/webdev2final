@@ -8,8 +8,8 @@ export const stationController = {
   async index(request, response) {
     const station = await stationStore.getStationById(request.params.id);
     const readings = await readingStore.getReadingsByStationId(request.params.id);
-  //  console.log("hi", readings);
-  //  console.log(readings[0].tempTrend, readings[0].trendLabels);
+    //  console.log("hi", readings);
+    //  console.log(readings[0].tempTrend, readings[0].trendLabels);
     const latestReading = await weathertopAnalytics.getLatestReading(station);
     const minTemp = await weathertopAnalytics.minTemp(station);
     const maxTemp = await weathertopAnalytics.maxTemp(station);

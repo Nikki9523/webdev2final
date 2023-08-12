@@ -109,6 +109,81 @@
       "minTemp": "0",
       "_id": "0980b582-0045-4cf6-9e75-87b50e437433",
       "stationid": "6b9385c9-cb09-4daa-b072-c502390dae3f"
+    },
+    {
+      "weatherCode": 801,
+      "temp": 40.98,
+      "windSpeed": 5.84,
+      "pressure": 1010,
+      "windDirection": 70,
+      "tempTrend": [
+        40.98,
+        40.03,
+        38.08,
+        39.06,
+        37.9,
+        34.62,
+        35.2,
+        39.09
+      ],
+      "trendLabels": [
+        "12/7/2023",
+        "13/7/2023",
+        "14/7/2023",
+        "15/7/2023",
+        "16/7/2023",
+        "17/7/2023",
+        "18/7/2023",
+        "19/7/2023"
+      ],
+      "date": "2023-08-19T11:00:00.000Z",
+      "_id": "bcbafcc8-749c-4b6c-924c-3e590227db4e",
+      "stationid": "e8a52cd8-3721-4162-b6f4-47bd070a105e"
+    },
+    {
+      "weatherCode": 100,
+      "temp": "2",
+      "windSpeed": 2,
+      "pressure": 2,
+      "windDirection": "N",
+      "temperatureFahrenheit": 35.6,
+      "weather": "Clear",
+      "beaufort": "Light Air",
+      "windChill": 2.55,
+      "date": "Sat Aug 12 2023",
+      "time": "11:33:24 GMT+0100 (Irish Standard Time)",
+      "_id": "7ec25ca0-19d4-4009-aa91-4ecdc7f280a0",
+      "stationid": "e8a52cd8-3721-4162-b6f4-47bd070a105e"
+    },
+    {
+      "weatherCode": 801,
+      "temp": 18.55,
+      "windSpeed": 12.98,
+      "pressure": 1009,
+      "windDirection": 234,
+      "tempTrend": [
+        18.09,
+        15.47,
+        15.45,
+        16.41,
+        15.47,
+        16.02,
+        16.39,
+        16.75
+      ],
+      "trendLabels": [
+        "12/7/2023",
+        "13/7/2023",
+        "14/7/2023",
+        "15/7/2023",
+        "16/7/2023",
+        "17/7/2023",
+        "18/7/2023",
+        "19/7/2023"
+      ],
+      "date": "2023-08-19T12:00:00.000Z",
+      "_id": "d84aa466-bb87-4e2d-a98e-c9b33ebd6b00",
+      "stationid": "9f155b51-16c4-4ce2-9054-151a69a4cf86"
     }
   ]
 }
