@@ -27,5 +27,5 @@ router.post("/account/updateaccount/:_id", accountsController.updateUserDetails)
 router.get("/account/deleteuser/:_id", accountsController.deleteUser);
 
 
-router.post("/dashboard/addreport", dashboardController.addreport);
+//router.post("/dashboard/addreport", dashboardController.addreport);
 router.post("/station/:id/addreport", stationController.addReport);

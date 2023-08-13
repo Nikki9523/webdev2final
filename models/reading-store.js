@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import { initStore } from "../utils/store-utils.js";
+import {stationStore} from "./station-store.js"
 
 const db = initStore("readings");
 
@@ -37,8 +38,19 @@ export const readingStore = {
     await db.write();
   },
 
-  async deleteAllReadings() {
-    db.data.readings = [];
+  async deleteAllReadings(associatedStationId) {
+    await db.read();
+    const station = await stationStore.getStationById(associatedStationId);
+    const stationId =  station._id;
+    for(let i = 0; i < db.data.readings.length; i++){
+      const assignedStationId = db.data.readings[i].stationid;
+     if(stationId === assignedStationId){
+        this.deleteReadingById(db.data.readings[i]._id);
+        await db.write();
+        await db.read();
+     }
+    }
     await db.write();
   },
-};
+}
+

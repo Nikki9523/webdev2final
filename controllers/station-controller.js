@@ -82,7 +82,7 @@ export const stationController = {
   async deleteAllReadings(request, response) {
     const stationId = request.params.stationId;
     console.log(`Deleting all readings from Station ${stationId}`);
-    await readingStore.deleteAllReadings();
+    await readingStore.deleteAllReadings(stationId);
     response.redirect("/station/" + stationId);
   },
 

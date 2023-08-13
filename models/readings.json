@@ -1,4 +1,20 @@
 {
   "file": "./models/readings.json",
-  "readings": []
+  "readings": [
+    {
+      "weatherCode": 100,
+      "temp": "2",
+      "windSpeed": 2,
+      "pressure": 2,
+      "windDirection": "N",
+      "temperatureFahrenheit": 35.6,
+      "weather": "Clear",
+      "beaufort": "Light Air",
+      "windChill": 2.55,
+      "date": "Sun Aug 13 2023",
+      "time": "21:43:41 GMT+0100 (Irish Standard Time)",
+      "_id": "25c2b261-94d4-449d-80c3-321539f9d677",
+      "stationid": "2f7b3be5-a993-4b28-8718-63a79fcb9740"
+    }
+  ]
 }
