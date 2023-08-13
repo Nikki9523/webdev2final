@@ -85,11 +85,13 @@ export const stationController = {
 
   async addReport(request, response) {
     console.log("rendering new report");
+    
+    console.log("hi");
     let report = {};
     let station = await stationStore.getStationById(request.params.id);
     const stationId = request.params.id;
-    const lat = request.body.lat;
-    const lng = request.body.lng;
+    const lat = station.latitude;
+    const lng = station.longitude;
     const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&appid=876f7ff7184f8ea886ab8a25dbece01d`
     const result = await axios.get(requestUrl);
     if (result.status == 200) {
