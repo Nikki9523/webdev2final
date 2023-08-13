@@ -1,5 +1,5 @@
+<section class="section">
 <form class="box" action="/station/{{station._id}}/addReading" method="POST">
-
 <div class="field">
   <label class="label">Weather Conditions</label>
   <div class="control">
@@ -48,3 +48,8 @@
 
   <button class="button is-primary">Manually Add Reading</button>
 </form>
+<form action="/station/{{station._id}}/addreport" method="POST">
+      <div class="field">
+        <button class="button is-danger">Generate Live Reading</button>
+    </form>
+</section>
