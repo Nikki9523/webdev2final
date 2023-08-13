@@ -7,7 +7,7 @@
         Station Readings
       </h1>
       <h2 class="subtitle">
-       View station readings and manually or automatically add new readings
+        View station readings and manually or automatically add new readings
       </h2>
     </div>
   </div>
@@ -20,5 +20,9 @@
   </div>
   {{> latest-reading}}
   {{> list-readings}}
-  {{> add-reading}}
+
+  <a href="/station/{{station._id}}/deleteallreadings" class="button is-danger">
+    Delete All Readings
+    </a>
+    {{> add-reading}}
 </section>

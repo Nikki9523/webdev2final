@@ -80,5 +80,12 @@ export const accountsController = {
     };
     await userStore.updateUser(userId._id, updatedUser);
     response.redirect("/Account");
-  }
+  },
+
+  async deleteUser(request, response){
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+    const user = await userStore.getUserById(loggedInUser._id);
+    await userStore.deleteUserById(user._id);
+    response.redirect("/");
+  },
 };

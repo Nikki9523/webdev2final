@@ -79,6 +79,13 @@ export const stationController = {
     response.redirect("/station/" + stationId);
   },
 
+  async deleteAllReadings(request, response) {
+    const stationId = request.params.stationId;
+    console.log(`Deleting all readings from Station ${stationId}`);
+    await readingStore.deleteAllReadings();
+    response.redirect("/station/" + stationId);
+  },
+
   async addReport(request, response) {
     console.log("rendering new report");
     let report = {};
