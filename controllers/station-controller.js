@@ -8,8 +8,6 @@ export const stationController = {
   async index(request, response) {
     const station = await stationStore.getStationById(request.params.id);
     const readings = await readingStore.getReadingsByStationId(request.params.id);
-    //  console.log("hi", readings);
-    //  console.log(readings[0].tempTrend, readings[0].trendLabels);
     const latestReading = await weathertopAnalytics.getLatestReading(station);
     const minTemp = await weathertopAnalytics.minTemp(station);
     const maxTemp = await weathertopAnalytics.maxTemp(station);
@@ -69,8 +67,6 @@ export const stationController = {
       time: new Date().toTimeString()
 
     };
-    console.log(`adding reading | weather code: ${newReading.weatherCode},
-    temp: ${newReading.temp}, wind speed: ${newReading.windSpeed}, pressure: ${newReading.pressure}, windChill: ${newReading.windChill}`);
     await readingStore.addReading(station._id, newReading);
     response.redirect("/station/" + station._id);
   },
@@ -85,8 +81,6 @@ export const stationController = {
 
   async addReport(request, response) {
     console.log("rendering new report");
-    
-    console.log("hi");
     let report = {};
     let station = await stationStore.getStationById(request.params.id);
     const stationId = request.params.id;
@@ -101,6 +95,12 @@ export const stationController = {
       report.windSpeed = reading.wind_speed;
       report.pressure = reading.pressure;
       report.windDirection = reading.wind_deg;
+      report.weather = weatherConversions.weatherCodeConverter(report.weatherCode);
+      report.temperatureFahrenheit = weatherConversions.convertCeslsiusToFahrenheit(Math.round(report.temp));
+      report.beaufortCode = weatherConversions.beaufortCode(report.windSpeed);
+      report.beaufort = weatherConversions.beaufortConversion(report.beaufortCode);
+      report.windDirection = weatherConversions.windDirection(report.windDirection);
+      report.windChill = weatherConversions.windChill(report.temp, report.windSpeed);
 
       report.tempTrend = [];
       report.windSpeedTrend = [];
@@ -113,7 +113,8 @@ export const stationController = {
         report.pressureTrend.push(trends[i].pressure);
         const date = new Date(trends[i].dt * 1000);
         report.trendLabels.push(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`);
-        report.date = date;
+        report.date = new Date().toDateString();
+        report.time = new Date().toTimeString();
       }
       await readingStore.addReading(stationId, report);
     }
