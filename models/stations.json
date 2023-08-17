@@ -1,0 +1,33 @@
+{
+  "file": "./models/stations.json",
+  "stations": [
+    {
+      "userid": "e64cec78-2c49-41b3-b04d-49455e988142",
+      "title": "Tramore",
+      "latitude": "52.160858",
+      "longitude": "-7.152420",
+      "_id": "d6743b54-1e3b-48ae-ba87-386207a83297"
+    },
+    {
+      "userid": "e64cec78-2c49-41b3-b04d-49455e988142",
+      "title": "Galway",
+      "latitude": "53.270668",
+      "longitude": "-9.056791",
+      "_id": "a80e880e-6ee1-4170-8116-b7943826bf70"
+    },
+    {
+      "userid": "6434341c-7fe3-42f5-8c1c-4dad47c3d19b",
+      "title": "Dublin",
+      "latitude": "53.350140",
+      "longitude": "-6.266155",
+      "_id": "a1fea192-ee15-47c9-a9fc-e76a3e01a5dc"
+    },
+    {
+      "userid": "6434341c-7fe3-42f5-8c1c-4dad47c3d19b",
+      "title": "Belfast",
+      "latitude": "54.607868",
+      "longitude": "-5.926437",
+      "_id": "fdeb246e-7bd2-420a-98a3-eaaaeb8071c2"
+    }
+  ]
+}
