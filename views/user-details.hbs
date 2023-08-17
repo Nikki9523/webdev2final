@@ -1,6 +1,6 @@
 {{> menu active="account"}}
+{{> user-info-hero}}
 {{> user-info}}
-
 <section class="content box">
     <div class="columns">
         <div class="column is-half">
@@ -26,7 +26,14 @@
                         required>
                 </div>
                 <div class="column">
+                    <div class="field is-grouped">
+                        <p class="control">
                     <button class="button is-primary">Update User Info</button>
+                    </p>
+                    <p class="control">
+                     <button class="button is-outlined"> <a href="/account">Cancel </a></button>
+                     </p>
+                </div>
                 </div>
             </form>
         </div>

@@ -1,8 +1,18 @@
 {{> menu active="dashboard"}}
 
-<section class="section">
-  {{> add-station}}
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Stations
+      </h1>
+      <h2 class="subtitle">
+       View and add weather stations
+      </h2>
+    </div>
+  </div>
 </section>
+<br>
 
 <section class="section">
   {{> list-stations}}
@@ -10,4 +20,8 @@
 
 <section class="section">
   {{>station-map}}
+</section>
+
+<section class="section">
+  {{> add-station}}
 </section>

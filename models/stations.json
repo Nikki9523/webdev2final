@@ -2,38 +2,32 @@
   "file": "./models/stations.json",
   "stations": [
     {
+      "userid": "e64cec78-2c49-41b3-b04d-49455e988142",
       "title": "Tramore",
-      "latitude": "42",
-      "longitude": "43",
-      "_id": "6b9385c9-cb09-4daa-b072-c502390dae3f"
+      "latitude": "52.160858",
+      "longitude": "-7.152420",
+      "_id": "d6743b54-1e3b-48ae-ba87-386207a83297"
     },
     {
-      "userid": "4207c258-90ce-4b2e-b997-c450ec34be5c",
-      "title": "Tramore",
-      "latitude": "33",
-      "longitude": "22",
-      "_id": "e8a52cd8-3721-4162-b6f4-47bd070a105e"
-    },
-    {
-      "userid": "4207c258-90ce-4b2e-b997-c450ec34be5c",
-      "title": "galway",
-      "latitude": "2",
-      "longitude": "2",
-      "_id": "1f6e6d8b-1c86-4865-84ef-7276472db91a"
-    },
-    {
-      "userid": "c85c0656-a386-49b7-a38a-7c2f9d3f5455",
+      "userid": "e64cec78-2c49-41b3-b04d-49455e988142",
       "title": "Galway",
-      "latitude": "33",
-      "longitude": "22",
-      "_id": "9f155b51-16c4-4ce2-9054-151a69a4cf86"
+      "latitude": "53.270668",
+      "longitude": "-9.056791",
+      "_id": "a80e880e-6ee1-4170-8116-b7943826bf70"
     },
     {
-      "userid": "c85c0656-a386-49b7-a38a-7c2f9d3f5455",
-      "title": "tramore2",
-      "latitude": "52",
-      "longitude": "-7",
-      "_id": "de8d0129-88a2-401e-a558-117dcdf8dd90"
+      "userid": "6434341c-7fe3-42f5-8c1c-4dad47c3d19b",
+      "title": "Dublin",
+      "latitude": "53.350140",
+      "longitude": "-6.266155",
+      "_id": "a1fea192-ee15-47c9-a9fc-e76a3e01a5dc"
+    },
+    {
+      "userid": "6434341c-7fe3-42f5-8c1c-4dad47c3d19b",
+      "title": "Belfast",
+      "latitude": "54.607868",
+      "longitude": "-5.926437",
+      "_id": "fdeb246e-7bd2-420a-98a3-eaaaeb8071c2"
     }
   ]
 }

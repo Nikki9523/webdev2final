@@ -17,11 +17,15 @@ router.post("/dashboard/addstation", dashboardController.addStation);
 router.get("/dashboard/deletestation/:id", dashboardController.deleteStation);
 router.post("/station/:id/addreading", stationController.addReading);
 router.get("/station/:stationId/deletereading/:readingid", stationController.deleteReading);
+router.get("/station/:stationId/deleteallreadings", stationController.deleteAllReadings);
 router.get("/station/:id", stationController.index);
 router.get("/about", aboutController.index);
 
 router.get("/account", accountsController.userDetails);
 router.get("/account/edit", accountsController.editUserDetails);
 router.post("/account/updateaccount/:_id", accountsController.updateUserDetails);
-router.post("/dashboard/addreport", dashboardController.addreport);
+router.get("/account/deleteuser/:_id", accountsController.deleteUser);
+
+
+//router.post("/dashboard/addreport", dashboardController.addreport);
 router.post("/station/:id/addreport", stationController.addReport);

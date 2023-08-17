@@ -1,9 +1,10 @@
 {{> menu active="account"}}
 
-<section class="section">
-  <h1 class="title">View user info</h1>
-
-  <p>View and Update User Details</p>
+{{> user-info-hero}}
 
   {{> user-info}}
+
+    <a href="/account/deleteuser/{{user._id}}" class="button is-danger">
+    Permanently Delete User
+    </a>
 </section>

@@ -1,7 +1,10 @@
+<section class="section">
 <form class="box" action="/station/{{station._id}}/addReading" method="POST">
-  <label>Enter Weather Code</label>
-  <div class="select is-normal">
-    <select name="weatherCode">
+<div class="field">
+  <label class="label">Weather Conditions</label>
+  <div class="control">
+    <div class="select">
+      <select name="weatherCode">
       <option value="100">Clear</option>
       <option value="200">Partial Clouds</option>
       <option value="300">Cloudy</option>
@@ -12,42 +15,41 @@
       <option value="800">Thunder</option>
     </select>
   </div>
+  </div>
+  </div>
 
-  <label>Enter Temperature</label>
-  <div class="field is-horizontal">
-    <div class="field-body">
-      <div class="field">
-        <input class="input" type="text" placeholder="Enter Temperature" name="temp" required>
-      </div>
+  <div class="field">
+    <label class="label">Temperature</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Temperature" name="temp" required>
     </div>
   </div>
 
-  <label>Enter Wind Speed</label>
-  <div class="field is-horizontal">
-    <div class="field-body">
-      <div class="field">
-        <input class="input" type="text" placeholder="Enter Wind Speed" name="windSpeed" required>
-      </div>
+  <div class="field">
+    <label class="label">Wind Speed</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Wind Speed" name="windSpeed" required>
     </div>
   </div>
 
-  <label>Add Wind Direction</label>
-  <div class="field is-horizontal">
-    <div class="field-body">
-      <div class="field">
-        <input class="input" type="text" placeholder="Enter Wind Direction" name="windDirection" required>
-      </div>
+  <div class="field">
+    <label class="label">Wind Direction</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Wind Direction" name="windDirection" required>
     </div>
   </div>
 
-  <label>Enter Pressure</label>
-  <div class="field is-horizontal">
-    <div class="field-body">
-      <div class="field">
-        <input class="input" type="text" placeholder="Enter Pressure" name="pressure" required>
-      </div>
+  <div class="field">
+    <label class="label">Pressure</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Pressure" name="pressure" required>
     </div>
   </div>
 
-  <button class="button is-primary">Add Reading</button>
+  <button class="button is-primary">Manually Add Reading</button>
 </form>
+<form action="/station/{{station._id}}/addreport" method="POST">
+      <div class="field">
+        <button class="button is-danger">Generate Live Reading</button>
+    </form>
+</section>

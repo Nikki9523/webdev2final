@@ -1,18 +1,28 @@
 <div class="columns">
+
+<div class="column">
+ <img class="user-image" src="/images/user.png" alt="placeholder avatar picture">
+ </div>
+
   <div class="column">
-    <p>
-      First Name: {{user.firstName}}
-    </p>
+    <strong>First Name</strong> <br>
+    {{user.firstName}}
   </div>
+
   <div class="column">
-    Last Name: {{user.lastName}}
+    <strong>Last Name</strong> <br>
+    {{user.lastName}}
   </div>
+
   <div class="column">
-    Email: {{user.email}}
+    <strong>Email</strong> <br>
+    {{user.email}}
   </div>
+
   <div class="column">
     <a href="/account/edit" class="button">
       {{> icons/edit-icon}}
     </a>
   </div>
+
 </div>

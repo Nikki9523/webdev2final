@@ -2,32 +2,18 @@
   "file": "./models/users.json",
   "users": [
     {
-      "firstName": "test",
-      "lastName": "test",
-      "email": "test",
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
       "password": "test",
-      "_id": "70521951-8359-4c7e-8366-2a8205f92cde"
+      "_id": "e64cec78-2c49-41b3-b04d-49455e988142"
     },
     {
-      "firstName": "Nicola",
-      "lastName": "Stack",
-      "email": "nicola@test.com",
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
       "password": "test",
-      "_id": "c85c0656-a386-49b7-a38a-7c2f9d3f5455"
-    },
-    {
-      "firstName": "a",
-      "lastName": "a",
-      "email": "a",
-      "password": "a",
-      "_id": "4207c258-90ce-4b2e-b997-c450ec34be5c"
-    },
-    {
-      "firstName": "a",
-      "lastName": "a",
-      "email": "a",
-      "password": "a",
-      "_id": "70c02e57-e141-4064-901c-16630145094d"
+      "_id": "6434341c-7fe3-42f5-8c1c-4dad47c3d19b"
     }
   ]
 }
