@@ -38,6 +38,8 @@ export const readingStore = {
     await db.write();
   },
 
+  /* tried to make this only delete station's readings instead of clearing everything 
+  but doesn't work, only deletes a few, not sure why*/
   async deleteAllReadings(associatedStationId) {
     await db.read();
     const station = await stationStore.getStationById(associatedStationId);
