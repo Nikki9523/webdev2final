@@ -1,11 +1,11 @@
 {{> welcome-menu active="login"}}
 
-
-
+    <div class="columns">
+    <div class="column is-half">
 <section class="section">
   <h1 class="title">Log in</h1>
+
   <form action="/authenticate" method="POST">
-  
     <div class="field">
       <label class="label">Email</label> <input class="input" type="text" placeholder="Enter email" name="email"
         required>
@@ -20,5 +20,9 @@
     </div>
   </form>
 </section>
+</div>
 
+<div class="column is-half">
 <img src="/images/weather.jpg">
+</div>
+</div>
